@@ -2,13 +2,24 @@
 <html>
 		<head>
 				<title>Django Blog</title>
+				<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+					rel="stylesheet">
+				<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+					rel="stylesheet">
 				<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" "rel="stylesheet">
 				<link href="{% static  'css/base.css'%}" rel="stylesheet">
 		</head>
 
 		<body>
 				<header>
+				<div class="nav-left">				
 						<h1><a href="{% url 'home'%}">Blogs</a></h1>
+				</div>
+
+				<div class="nav-right mt-3 mr-3">
+						<h1><a href="{% url 'post_new' %}"><i class="fa fa-plus-circle"></i></a></h1>
+				</div>
+
 				</header>
 				<div>
 						{%block content%}
