@@ -25,7 +25,7 @@ SECRET_KEY = '$f*tkrb4(%u!*gwhs=uy%s2hbnkncuoi!%lkbu^h==&6$p9i(d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
