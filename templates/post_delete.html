@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="container">
+		<div class="row d-flex justify-content-center">
+<h1>Delete post</h1>
+		</div>
+
+<div class="row d-flex justify-content-center  align-items-center">
+<form action="" method="post">{% csrf_token %}
+		<p>Are you sure you want to delete "{{ post.title  }}"?</p>
+		<center><button role="button" class="btn btn-danger" type="submit" value="Confirm"><i class="fa fa-check
+		fa-lg"></i></button></center>
+</form>
+</div>
+</div>
+{%endblock content%}

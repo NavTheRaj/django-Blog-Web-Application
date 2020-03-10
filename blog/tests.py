@@ -43,5 +43,53 @@ class BlogTests(TestCase):
             self.assertContains(response,'A good title')
             self.assertTemplateUsed(response,'post_detail.html')
 
+        def test_get_absolute_url(self):
+            self.assertEqual(self.post.get_absolute_url(),'/post/1/')
+
+        def test_post_content(self):
+            self.assertEqual({self.post.title},'A test title')
+            self.assertEqual({self.post.author},'Paulo Coelho')
+            self.assertEqual({self.post.body},'Test Body')
+
+        def test_post_list_view(self):
+            response = self.client.get(reverse('home'))
+            self.assertEqual(response.status_code,200)
+            self.assertContains(response,'Test Body')
+            self.assertTemplateUsed(response,'home.html')
+            
+        def test_detail_view(self):
+            response = self.client.get('/post/1/')
+            no_reponse = self.client.get('/post/100000/')
+            self.assertEqual(response.status_code,200)
+            self.assertContains(response,'A test title')
+            self.assertTemplateUsed(response,'post_detail.html')
+
+        def test_post_create_view(self):
+            response = self.client.post(reverse('post_new'),{
+                'title':'A new title',
+                'body':'New Text',
+                'author':self.user
+            })
+            self.assertEqual(response.status_code,200)
+            self.assertContains(response,'A new title')
+            self.assertContains(response,'New Text')
+
+        def test_post_update_view(self):
+            response = self.client.post(reverse('post_edit',args='1'),{ 
+                'title':'Updated title',
+                'body':'Updated Text',
+            })
+            self.assertEqual(response.status_code,200)
+
+        def test_post_delete_view(self):
+            response = self.client.get(reverse('post_delete',args='1'))
+            self.assertEqual(response,status_code,200)
+            
+
+
+
+
+
+
 
 
