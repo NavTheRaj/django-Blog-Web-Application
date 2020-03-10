@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+{%block content%}
+<div class="row d-flex justify-content-center">
+		<div class="card card-sm shadow p-5">	
+				<div class="p-0 justify-content-center mb-4"><h3>Login</h3></div>
+<form method="post" class="">
+		{%csrf_token%}
+		{{form.as_p}}
+		<center><button type="Submit" class="btn btn-success">Log In</button></center>
+</form>
+		</div>
+</div>
+{%endblock content%}
